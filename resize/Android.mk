@@ -74,6 +74,21 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := $(resize2fs_src_files)
 LOCAL_C_INCLUDES := $(resize2fs_c_includes)
 LOCAL_CFLAGS := $(resize2fs_cflags)
+LOCAL_STATIC_LIBRARIES := $(resize2fs_system_shared_libraries) $(resize2fs_shared_libraries)
+LOCAL_MODULE := recovery_resize2fs
+LOCAL_MODULE_CLASS := RECOVERY_EXECUTABLES
+LOCAL_MODULE_PATH := $(TARGET_RECOVERY_ROOT_OUT)/sbin
+LOCAL_UNSTRIPPED_PATH := $(PRODUCT_OUT)/symbols/recovery
+LOCAL_MODULE_STEM := resize2fs
+LOCAL_FORCE_STATIC_EXECUTABLE := true
+LOCAL_MODULE_TAGS := optional
+include $(BUILD_EXECUTABLE)
+
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES := $(resize2fs_src_files)
+LOCAL_C_INCLUDES := $(resize2fs_c_includes)
+LOCAL_CFLAGS := $(resize2fs_cflags)
 LOCAL_SHARED_LIBRARIES := $(addsuffix _host, $(resize2fs_shared_libraries))
 LOCAL_MODULE := resize2fs_host
 LOCAL_MODULE_STEM := resize2fs
